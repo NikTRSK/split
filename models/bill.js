@@ -9,10 +9,11 @@ var billSchema = new mongoose.Schema({
     items: [
     	{
     		item: String,
-    		cost: Number
+    		cost: Number,
+    		paid: Boolean
     	}
     	]
 });
 
 // Return model
-module.exports = restful.model('Bills', productSchema);
+module.exports = restful.model('Bills', billSchema);

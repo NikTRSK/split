@@ -1,13 +1,19 @@
-// Dependencies
+// split API BASE SETUP
+//=================================================================================
+
+// Setup dependencies
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+// init Express
+var app = express();
 
 // MongoDB
 mongoose.connect('mongodb://localhost/splitDB');
 
-// Express
-var app = express();
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+// this enables JSON magic
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -15,5 +21,6 @@ app.use(bodyParser.json());
 app.use('/api', require('./routes/api'));
 
 // Start server
-app.listen(3000);
-console.log('API is running on port 3000');
+var port = process.env.PORT || 3000;	// server runs on this port, 3000 for now
+app.listen(port);
+console.log('API is running on port ' + port);
