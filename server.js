@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 // init Express
 var app = express();
 
-// MongoDB
+// connect to MongoDB using Mongoose
 mongoose.connect('mongodb://localhost/splitDB');
 
 // configure app to use bodyParser()
@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost/splitDB');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Routes
+// Routes. Connects to the bill in api.js
 app.use('/api', require('./routes/api'));
 
 // Start server

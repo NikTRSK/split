@@ -4,13 +4,28 @@ var mongoose = restful.mongoose;
 
 // Schema
 var billSchema = new mongoose.Schema({
-    user: String,
+    username: {
+    	type: mongoose.Schema.Types.ObjectID,
+    	ref: 'Users'
+    } // key to the users model
     curr_balance: Number,
     items: [
     	{
     		item: String,
+    		qty: {
+    			type: Number,
+    			default: 1
+    		},
     		cost: Number,
-    		paid: Boolean
+    		paid: {
+    			type: Boolean,
+    			default: false
+    		},
+    		spl_with: [
+    		{
+    			user: String // map to user
+    		}
+    		]
     	}
     	]
 });
