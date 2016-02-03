@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 // Models
-var Bill = require('../models/Bill');
-var User = require('../models/User')
+var Bill = require('./models/Bill');
+var User = require('./models/User')
 
 // Routes
 Bill.methods(['get', 'put', 'post', 'delete']);

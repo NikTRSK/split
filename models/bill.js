@@ -6,7 +6,7 @@ var mongoose = restful.mongoose;
 var billSchema = new mongoose.Schema({
     username: {
     	type: mongoose.Schema.Types.ObjectID,
-    	ref: 'Users'
+    	ref: 'User'
     } // key to the users model
     curr_balance: Number,
     items: [
@@ -31,4 +31,4 @@ var billSchema = new mongoose.Schema({
 });
 
 // Return model
-module.exports = restful.model('Bills', billSchema);
+module.exports = restful.model('Bill', billSchema);
