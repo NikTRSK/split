@@ -5,9 +5,9 @@ var mongoose = restful.mongoose;
 // Schema
 var billSchema = new mongoose.Schema({
     username: {
-    	type: mongoose.Schema.Types.ObjectID,
+    	type: mongoose.Schema.Types.ObjectId,
     	ref: 'User'
-    } // key to the users model
+    }, // key to the users model
     curr_balance: Number,
     items: [
     	{

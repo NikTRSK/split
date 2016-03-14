@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 // Models
-var Bill = require('./models/Bill');
-var User = require('./models/User')
+var Bill = require('../models/Bill');
+//var User = require('../models/User')
 
 // Routes
 Bill.methods(['get', 'put', 'post', 'delete']);
@@ -22,6 +22,7 @@ router.use(function(req, res, next) {
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
 });
+/*
 
 // on routes that end in /bills
 // ----------------------------------------------------
@@ -29,7 +30,7 @@ router.route('/bills')
 
 	// create a bill (accessed at POST http://localhost:3000/bills)
 	.post(function(req, res) {
-		
+
 		var bill = new Bill();		// create a new instance of the Bill model
 		bill.curr_balance = req.body.curr_balance;  // set the bill current balance (comes from the request)
 
@@ -40,7 +41,7 @@ router.route('/bills')
 			res.json({ message: 'Bill created!' });
 		});
 
-		
+
 	})
 
 	// get all the bills (accessed at GET http://localhost:3000/api/bills)
@@ -97,6 +98,7 @@ router.route('/bills/:bill_id')
             res.json({ message: 'Successfully deleted' });
         });
     });
+*/
 
 
 // Return router

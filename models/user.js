@@ -2,6 +2,10 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+function validatePresenceOf (value) {
+  return value.length > 1;
+}
+
 // Schema
 var userSchema = new mongoose.Schema({
     firstname: {
@@ -14,7 +18,7 @@ var userSchema = new mongoose.Schema({
     },
     username: {
     	type: String,
-    	unique: true,
+      unique: true,
     	trim: true,
     	validate : [validatePresenceOf, 'Username is required']
     },// create a method to create a username
@@ -22,16 +26,16 @@ var userSchema = new mongoose.Schema({
     email: {
     	type: String,
     	validate : [validatePresenceOf, 'email is required']
-    }
+    },
     phone: Number,
     created: {
     	type: Date,
     	default: Date.now
-  	},
+  	}/*,
     bills: [{
     	bill: //key to bill
-    }]
+    }]*/
 });
 
 // Return model
-module.exports = restful.model('User', billSchema);
+module.exports = restful.model('User', userSchema);
