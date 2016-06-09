@@ -19,6 +19,30 @@ var db = require('./config/db');
 //mongoose.connect('mongodb://localhost/splitDB');
 mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
+// configure Passport =============================================================
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'mySecretKey'})); // why do we need the secret
+app.use(passport.initialize());
+app.use(passport.session());
+/*// serialize user instance
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+// deserialize user instance
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});*/
+// Use flash middleware provided by connect-flash to store messages in session
+// and displaying in templates
+var flash = require('connect-flash');
+app.use(flash());
+//Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
+
 // configure api to use bodyParser() ==============================================
 // this will let us get the data from a POST
 // this enables JSON magic
@@ -41,6 +65,9 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 // Routes. Connects to the bill in api.js =======================================
 //api.use('/api', require('./api/routes/api'));
 app.use('/api/user', require('./api/routes/users'));
+
+// Login routes
+app.use('/', require('./api/routes/index'));
 
 // for ANGULAR use
 app.get('*', function(req, res) {

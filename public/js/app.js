@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'UsersCtrl']);
+angular.module('splitApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'UsersCtrl']);

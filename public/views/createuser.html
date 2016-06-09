@@ -1,6 +1,4 @@
 <div class="jumbotron">
-	<!-- Create user forms -->
-	<!--<form name="userForm" ng-controller="usersCtrl">-->
 		<div class="create-user">
 			<div class="form-group">
 				<label for="inputFirstName">First Name</label>
@@ -18,6 +16,12 @@
 				<label for="inputUsername">Username</label>
 				<input type="text" class="form-control" id="inputUsername" ng-model="user.username" placeholder="Username">
 				<span ng-show="errorUsername">{{errorUsername}}</span>
+			</div>
+
+			<div class="form-group">
+				<label for="inputUsername">Password</label>
+				<input type="text" class="form-control" id="inputPassword" ng-model="user.password" placeholder="Password">
+				<span ng-show="errorPassword">{{errorPassword}}</span>
 			</div>
 
 			<div class="form-group">

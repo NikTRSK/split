@@ -14,7 +14,14 @@
     "mongoose" : "~4.4.7",
     "body-parser" : "~1.4.2",
     "method-override" : "~2.0.2",
-    "node-restful": "^0.2.4",
-    "passport": "^0.3.2"
+    "node-restful": "~0.2.4",
+    "passport" : "~0.1.17",
+    "passport-local" : "~0.1.6",
+    "passport-facebook" : "~1.0.2",
+    "passport-twitter" : "~1.0.2",
+    "passport-google-oauth" : "~0.1.5",
+    "express-session": "~1.13.0",
+    "bcrypt-nodejs": "*",
+    "connect-flash": "*"
   }
 }

@@ -34,6 +34,7 @@ router.route('/')
     user.username = req.body.username;
     user.email = req.body.email;
     user.phone = req.body.phone;
+    user.password = req.body.password;
 
     user.save(function(err) {
       if (err)
@@ -64,6 +65,7 @@ router.route('/:_id')
         user.username = req.body.username;
         user.email = req.body.email;
         user.phone = req.body.phone;
+        user.password = req.body.password;
       }
 
       user.save(function(err) {
@@ -103,6 +105,7 @@ router.route('/username/:username')
         user.username = req.body.username;
         user.email = req.body.email;
         user.phone = req.body.phone;
+        user.password = req.body.password;
       }
 
       user.save(function(err) {

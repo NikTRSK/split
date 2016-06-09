@@ -22,7 +22,7 @@ var userSchema = new mongoose.Schema({
     trim: true,
     validate : [validatePresenceOf, 'Username is required']
   },// create a method to create a username
-  //password: { type: String, required: true },
+  password: { type: String, required: true },
   email: {
     type: String,
     validate : [validatePresenceOf, 'email is required']

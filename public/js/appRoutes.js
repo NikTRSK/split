@@ -17,7 +17,17 @@ angular.module('appRoutes', [])
 		.when('/createuser', {
 			templateUrl: 'views/createuser.html',
 			controller: 'UsersController'
-		});
+		})
+
+		.when('/signup', {
+			templateUrl: 'views/signup.html',
+			controller: 'UsersController'
+		})
+
+    .when('/login', {
+      templateUrl: 'views/login.html',
+      controller: 'UsersController'
+    });
 
 	$locationProvider.html5Mode(true);
 

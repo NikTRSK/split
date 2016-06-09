@@ -15,13 +15,23 @@ angular.module('UsersCtrl', []).controller('UsersController', function($scope, $
 
   // create a new user
   $scope.createUser = function () {
+    console.log($scope.user);
     $http.post('/api/user', angular.toJson($scope.user))
       .success(function (response) {
-/*        console.log('TEST:' + $scope.user);
-        $scope.userData = {}; // clear the form so that a new user can be created
-        $scope.user = response.data;*/
         console.log(response);
 
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+  };
+
+  $scope.loginUser = function () {
+    // check if user exists
+    $http.post('/api/login', angular.toJson($scope.user))
+      .success(function (response) {
+        console.log(response);
+        $scope.message = response.message;
       })
       .error(function (data) {
         console.log('Error: ' + data);
