@@ -1,4 +1,4 @@
-# split
+# SpotME
 
 ##Dev instructions
 ###Installing Dependencies

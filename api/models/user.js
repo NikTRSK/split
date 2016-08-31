@@ -1,5 +1,6 @@
 // Dependencies
 var restful = require('node-restful');
+var bcrypt = require('bcrypt-nodejs');
 var mongoose = restful.mongoose;
 
 function validatePresenceOf (value) {
@@ -8,34 +9,47 @@ function validatePresenceOf (value) {
 
 // Schema
 var userSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-    validate : [validatePresenceOf, 'Firstname is required']
+/*  firstname: String,
+  lastname: String,*/
+  local            : {
+    email        : String,
+    password     : String,
   },
-  lastname: {
-    type: String,
-    validate : [validatePresenceOf, 'Lastname is required']
+  facebook         : {
+    id           : String,
+    token        : String,
+    email        : String,
+    name         : String
   },
-  username: {
-    type: String,
-    unique: true,
-    trim: true,
-    validate : [validatePresenceOf, 'Username is required']
-  },// create a method to create a username
-  password: { type: String, required: true },
-  email: {
-    type: String,
-    validate : [validatePresenceOf, 'email is required']
+  twitter          : {
+    id           : String,
+    token        : String,
+    displayName  : String,
+    username     : String
   },
+  google           : {
+    id           : String,
+    token        : String,
+    email        : String,
+    name         : String
+  }/*,
   phone: Number,
   created: {
     type: Date,
     default: Date.now
-  }/*,
-   bills: [{
-   bill: //key to bill
-   }]*/
+  }*/
 });
+
+// methods ======================
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+};
 
 // Return model
 module.exports = restful.model('User', userSchema);

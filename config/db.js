@@ -1,3 +1,3 @@
 module.exports = {
-	url : 'mongodb://localhost/splitDB'
+	url : 'mongodb://localhost/SpotMEDB'
 }
